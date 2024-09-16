@@ -8,6 +8,7 @@ button.classList.add("button");
 body.insertBefore(buttonContainer, container);
 buttonContainer.appendChild(button);
 
+// Generate the initial 16x16 grid
 let gridWidth = 16;
 const containerWidth = 800;
 let pixelWidth = containerWidth/gridWidth;
@@ -25,25 +26,40 @@ function generateGrid(){
     }
 }
 
-generateGrid();
-
-// Add event listener for when hover occurs over div, the color changes
-const pixel = document.querySelectorAll(".pixel");
-
-pixel.forEach((pixel) => {
-    pixel.addEventListener("mouseover", (event) =>{
-        pixel.classList.remove("uncolored");
-        pixel.classList.add("colored");
+function colorPixel(){
+    pixel.forEach((pixel) => {
+        pixel.addEventListener("mouseover", (event) =>{
+            pixel.classList.remove("uncolored");
+            pixel.classList.add("colored");
+        });
     });
-});
+}
 
-// Function to generate a new grid
-    // get user input from user alert
-    // continue to request user input if input is > 100
-    // assign the user input as the number of divs ( n x n grid)
-    // remove the old grid
+generateGrid();
+let pixel = document.querySelectorAll(".pixel");
+colorPixel();
 
-// Add event listener for when the Generate grid button is pressed, alert the user for input
+function newGrid(){
+    // Remove the old grid
+    pixel.forEach((pixel) =>{
+        pixel.remove();
+    });
 
-// Extra credit: the square's RGB values are randomized with each interaction
+    // Create a new grid
+    gridWidth = 0;
+    while (gridWidth <= 0 || gridWidth > 100 || gridWidth%1 !== 0) {
+        gridWidth = prompt("Please input the desired grid size. (100x100 max)");
+    }
+    pixelWidth = containerWidth/gridWidth;
+    pixelHeight = pixelWidth;
+    totalPixels = gridWidth**2;
+    generateGrid();
+    pixel = document.querySelectorAll(".pixel");
+}
+
+button.addEventListener("click", (event) =>{
+    newGrid();
+    colorPixel();
+})
+
 // Extra credit: implement a progressive darkening effect where each interaction darkens the square by 10%
