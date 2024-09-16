@@ -1,14 +1,15 @@
 .colored {
     background-color: #507594;
+    opacity: 0.1;
 }
 
 .uncolored {
-    background-color: #ECEBE6;
+    background-color: #FFF;
 }
 
 button {
     background-color: #507594;
-    color: #ECEBE6;
+    color: #FFF;
     border-radius: 8px;
     padding: 8px;
     margin-top: 16px;
@@ -29,6 +30,6 @@ button {
 }
 
 .pixel {
-    border: solid black;
+    border: solid 1px #D3D3D3;
     box-sizing: border-box;
 }

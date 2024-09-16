@@ -27,21 +27,25 @@ function generateGrid(){
 }
 
 function colorPixel(){
-    pixel.forEach((pixel) => {
+    pixelNodelist.forEach((pixel) => {
         pixel.addEventListener("mouseover", (event) =>{
             pixel.classList.remove("uncolored");
             pixel.classList.add("colored");
+            let opacity = Number(pixel.style.opacity);
+            if (opacity < 1) {
+                pixel.style.opacity = opacity + 0.1;
+            }
         });
-    });
+    })
 }
 
 generateGrid();
-let pixel = document.querySelectorAll(".pixel");
+let pixelNodelist = document.querySelectorAll(".pixel");
 colorPixel();
 
 function newGrid(){
     // Remove the old grid
-    pixel.forEach((pixel) =>{
+    pixelNodelist.forEach((pixel) =>{
         pixel.remove();
     });
 
@@ -54,12 +58,10 @@ function newGrid(){
     pixelHeight = pixelWidth;
     totalPixels = gridWidth**2;
     generateGrid();
-    pixel = document.querySelectorAll(".pixel");
+    pixelNodelist = document.querySelectorAll(".pixel");
 }
 
 button.addEventListener("click", (event) =>{
     newGrid();
     colorPixel();
 })
-
-// Extra credit: implement a progressive darkening effect where each interaction darkens the square by 10%
