@@ -11,7 +11,7 @@ button {
     color: #ECEBE6;
     border-radius: 8px;
     padding: 8px;
-    margin: 16px auto auto auto;
+    margin-top: 16px;
 }
 
 .container {
@@ -21,6 +21,11 @@ button {
     width: 800px;
     height: 800px;
     margin: 16px auto auto auto;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
 }
 
 .pixel {
