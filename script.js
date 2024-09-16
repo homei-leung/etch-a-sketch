@@ -8,7 +8,6 @@ button.classList.add("button");
 body.insertBefore(buttonContainer, container);
 buttonContainer.appendChild(button);
 
-// Generate a 16x16 grid
 let gridWidth = 16;
 const containerWidth = 800;
 let pixelWidth = containerWidth/gridWidth;
@@ -29,6 +28,14 @@ function generateGrid(){
 generateGrid();
 
 // Add event listener for when hover occurs over div, the color changes
+const pixel = document.querySelectorAll(".pixel");
+
+pixel.forEach((pixel) => {
+    pixel.addEventListener("mouseover", (event) =>{
+        pixel.classList.remove("uncolored");
+        pixel.classList.add("colored");
+    });
+});
 
 // Function to generate a new grid
     // get user input from user alert
